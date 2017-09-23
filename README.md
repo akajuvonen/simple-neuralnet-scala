@@ -10,12 +10,14 @@ Note: Everything is programmed and tested only in Ubuntu 17.04.
 
 ## Compiling and running
 
-TODO
+Use `sbt compile` to compile the program. It can be run using `sbt run`.
+If  you want to create a jar package, run `sbt package`. The package will
+appear in `target/scala-x.xx/`.
 
 ## Running tests
 
-TODO
+Unit tests can be run with `sbt test`.
 
 ## Cleaning
 
-TODO
+To clean the files in target folders, run `sbt clean`.
