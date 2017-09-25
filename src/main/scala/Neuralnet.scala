@@ -1,6 +1,7 @@
 package com.github.akajuvonen.neuralnet_scala
 
-object Neuralnet extends App {
-  // TODO
-  println("Hi, this is neuralnet")
+object Neuralnet {
+  def main(args: Array[String]) {
+    println("Hi, this is neuralnet")
+  }
 }
