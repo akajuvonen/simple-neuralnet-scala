@@ -6,6 +6,7 @@ object Neuralnet {
    */
   def main(args: Array[String]) {
     // Prints only this for now
-    println("Hi, this is neuralnet")
+    println("Hi, this is NeuralNet")
+    SigmoidTools.sigmoid()
   }
 }
