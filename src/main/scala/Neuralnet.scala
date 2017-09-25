@@ -1,12 +1,18 @@
 package com.github.akajuvonen.neuralnet_scala
 
-object Neuralnet {
+class Neuralnet {
   /* The neuralnet class.
    * TODO
    */
+   def print() {
+     // Prints only this for now
+     println("Hi, this is NeuralNet")
+     SigmoidTools.sigmoid()
+   }
+}
+
+object Neuralnet {
   def main(args: Array[String]) {
-    // Prints only this for now
-    println("Hi, this is NeuralNet")
-    SigmoidTools.sigmoid()
+    val nnet : Neuralnet = new Neuralnet
   }
 }
