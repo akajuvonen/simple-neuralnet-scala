@@ -10,6 +10,6 @@ object SigmoidTools {
    *  @return Result of the sigmoid function.
    */
   def sigmoid(x: Double): Double = {
-    1.0
+    1.0 / (1 + exp(-x))
   }
 }
