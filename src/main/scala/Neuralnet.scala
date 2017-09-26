@@ -1,20 +1,17 @@
 package com.github.akajuvonen.neuralnet_scala
 
+/** MPL neural network class. */
 class Neuralnet {
-  /* The neuralnet class.
-   * TODO
-   */
-   def sayHi() {
-     // Prints only this for now
-     println("Hi, this is NeuralNet")
-     SigmoidTools.sigmoid()
-   }
+  /** Prints greetings (placeholder). */
+  def sayHi() {
+    // Prints only this for now
+    println("Hi, this is NeuralNet")
+    println(SigmoidTools.sigmoid(0.0))
+  }
 }
 
+/** Neuralnet object for running from cli etc. */
 object Neuralnet {
-  /* NeuralNet object.
-   * Used to execute the main method when not importing the neural net.
-   */
   def main(args: Array[String]) {
     val nnet : Neuralnet = new Neuralnet
     nnet.sayHi()
