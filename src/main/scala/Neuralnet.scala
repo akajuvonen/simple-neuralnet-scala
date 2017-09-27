@@ -13,7 +13,7 @@ class Neuralnet {
 /** Neuralnet object for running from cli etc. */
 object Neuralnet {
   def main(args: Array[String]) {
-    val nnet : Neuralnet = new Neuralnet
+    val nnet: Neuralnet = new Neuralnet
     nnet.sayHi()
   }
 }
