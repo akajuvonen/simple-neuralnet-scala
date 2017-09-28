@@ -12,4 +12,13 @@ object SigmoidTools {
   def sigmoid(x: Double): Double = {
     1.0 / (1 + exp(-x))
   }
+
+  /** Sigmoid derivative function.
+   *
+   *  @param x Sigmoid function result.
+   *  @return Derivative of the sigmoid function.
+   */
+  def sigmoidDerivative(x: Double): Double = {
+    x * (1- x)
+  }
 }
