@@ -4,7 +4,7 @@ import org.scalatest._
 
 /** SigmoidTools test class. */
 class SigmoidToolsSpec extends FlatSpec{
-  "The SigmoidTools.sigmoid function" should
+  "The SigmoidTools.sigmoid" should
   "return appr. zero with small x values" in {
     assert(SigmoidTools.sigmoid(-100) < 0.01)
   }
