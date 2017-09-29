@@ -1,7 +1,7 @@
 package com.github.akajuvonen.neuralnet_scala
 
 /** MPL neural network class. */
-class Neuralnet {
+class Neuralnet(hidSize: Int = 4, maxIter: Int = 60000) {
   /** Prints greetings (placeholder). */
   def sayHi() {
     // Prints only this for now
