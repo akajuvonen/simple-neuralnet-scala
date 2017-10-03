@@ -12,6 +12,7 @@ class Neuralnet(hidSize: Int = 4, maxIter: Int = 60000) {
 
 /** Neuralnet object for running from cli etc. */
 object Neuralnet extends App {
+  // Consider this the "main" method 
   val nnet: Neuralnet = new Neuralnet
   nnet.sayHi()
 }
