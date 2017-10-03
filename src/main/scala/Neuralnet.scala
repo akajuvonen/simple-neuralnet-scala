@@ -12,7 +12,7 @@ class Neuralnet(hidSize: Int = 4, maxIter: Int = 60000) {
 
 /** Neuralnet object for running from cli etc. */
 object Neuralnet {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val nnet: Neuralnet = new Neuralnet
     nnet.sayHi()
   }
