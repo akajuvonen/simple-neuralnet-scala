@@ -1,5 +1,6 @@
 # simple-neuralnet-scala
-A simple MLP neural network implemented in Scala
+A simple MLP neural network implemented in Scala.
+NOTE: Still heavily work-in-progress.
 
 ## Requirements
 
