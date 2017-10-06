@@ -8,7 +8,7 @@ package com.github.akajuvonen.neuralnet_scala
  *  @param hidSize number of nodes in hidden layer
  *  @param maxIter max number of iterations to run
  */
-class Neuralnet(trainIn: Vector[Double], trainOut: Vector[Double],
+class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
   hidSize: Int, maxIter: Int) {
     /** Init a new neuralnet with type int vectors.
      *
@@ -18,11 +18,14 @@ class Neuralnet(trainIn: Vector[Double], trainOut: Vector[Double],
      *  @param maxIter max number of iterations to run
      *  @param dummy dummy variable needed because of type erasure, don't use
     */
-    def this(trainIn: Vector[Int], trainOut: Vector[Int],
+    def this(trainIn: Vector[Vector[Int]], trainOut: Vector[Int],
     hidSize: Int, maxIter: Int, dummy: Int = 0) {
-      this(trainIn.map(_.toDouble).to[Vector],
-      trainOut.map(_.toDouble).to[Vector], hidSize, maxIter)
+      this(trainIn.map(_.map(_.toDouble)),
+      trainOut.map(_.toDouble), hidSize, maxIter)
     }
+    // Neuralnet just prints training data for now, should all be doubles
+    trainIn foreach println
+    trainOut foreach println
 }
 
 /** Neuralnet object for running from cli etc. */
@@ -39,5 +42,6 @@ object Neuralnet extends App {
   )
   // Training outputs
   val trainOut = Vector(1, 0, 1, 1, 0, 0)
-  //val nnet: Neuralnet = new Neuralnet(trainIn, trainOut)
+  // Init neuralnet
+  val nnet: Neuralnet = new Neuralnet(trainIn, trainOut, 4, 60000)
 }
