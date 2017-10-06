@@ -2,7 +2,12 @@ package com.github.akajuvonen.neuralnet_scala
 
 /** MPL neural network class. */
 class Neuralnet(trainIn: Vector[Double], trainOut: Vector[Double],
-  hidSize: Int = 4, maxIter: Int = 60000) {
+  hidSize: Int, maxIter: Int) {
+    def this(trainIn: Vector[Int], trainOut: Vector[Int],
+    hidSize: Int, maxIter: Int, dummy: Int = 0) {
+      this(trainIn.map(_.toDouble).to[Vector],
+      trainOut.map(_.toDouble).to[Vector], hidSize, maxIter)
+    }
 }
 
 /** Neuralnet object for running from cli etc. */
