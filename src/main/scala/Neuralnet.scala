@@ -20,6 +20,8 @@ class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
     */
     def this(trainIn: Vector[Vector[Int]], trainOut: Vector[Int],
     hidSize: Int, maxIter: Int, dummy: Int = 0) {
+      // Converts ints to doubles and calls the other constructor
+      // Only one entry point is allowed in scala
       this(trainIn.map(_.map(_.toDouble)),
       trainOut.map(_.toDouble), hidSize, maxIter)
     }
