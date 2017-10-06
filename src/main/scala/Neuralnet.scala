@@ -1,8 +1,23 @@
 package com.github.akajuvonen.neuralnet_scala
 
-/** MPL neural network class. */
+/** MPL neural network class.
+ *
+ *  @constructor Init a new neuralnet with training data (double vectors).
+ *  @param trainIn training input data vector
+ *  @param trainOut training output data vector
+ *  @param hidSize number of nodes in hidden layer
+ *  @param maxIter max number of iterations to run
+ */
 class Neuralnet(trainIn: Vector[Double], trainOut: Vector[Double],
   hidSize: Int, maxIter: Int) {
+    /** Init a new neuralnet with type int vectors.
+     *
+     *  @param trainIn training input data vector
+     *  @param trainOut training output data vector
+     *  @param hidSize number of nodes in hidden layer
+     *  @param maxIter max number of iterations to run
+     *  @param dummy dummy variable needed because of type erasure, don't use
+    */
     def this(trainIn: Vector[Int], trainOut: Vector[Int],
     hidSize: Int, maxIter: Int, dummy: Int = 0) {
       this(trainIn.map(_.toDouble).to[Vector],
