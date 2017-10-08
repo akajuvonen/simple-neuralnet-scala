@@ -1,5 +1,7 @@
 package com.github.akajuvonen.neuralnet_scala
 
+import scala.util.Random
+
 /** MPL neural network class.
  *
  *  @constructor Init a new neuralnet with training data (double vectors).
@@ -25,9 +27,12 @@ class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
       this(trainIn.map(_.map(_.toDouble)),
       trainOut.map(_.toDouble), hidSize, maxIter)
     }
-    // Neuralnet just prints training data for now, should all be doubles
-    trainIn foreach println
-    trainOut foreach println
+    // Init weights randomly
+    val r = Random
+    // Weights between input and hidden layer
+    // TODO
+    // Weights between hidden and output layer
+    // TODO
 }
 
 /** Neuralnet object for running from cli etc. */
