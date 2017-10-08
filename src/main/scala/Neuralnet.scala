@@ -9,7 +9,7 @@ package com.github.akajuvonen.neuralnet_scala
  *  @param maxIter max number of iterations to run
  */
 class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
-  hidSize: Int, maxIter: Int) {
+                hidSize: Int, maxIter: Int) {
     /** Init a new neuralnet with type int vectors.
      *
      *  @param trainIn training input data vector
@@ -19,7 +19,7 @@ class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
      *  @param dummy dummy variable needed because of type erasure, don't use
     */
     def this(trainIn: Vector[Vector[Int]], trainOut: Vector[Int],
-    hidSize: Int, maxIter: Int, dummy: Int = 0) {
+             hidSize: Int, maxIter: Int, dummy: Int = 0) {
       // Converts ints to doubles and calls the other constructor
       // Only one entry point is allowed in scala
       this(trainIn.map(_.map(_.toDouble)),
