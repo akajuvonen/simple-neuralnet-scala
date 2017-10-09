@@ -30,9 +30,11 @@ class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
     // Init weights randomly
     val r = Random
     // Weights between input and hidden layer
-    // TODO
+    // Size trainIn(0).length * hidden size
+    val weights1 = trainIn(0).map(_ => 1.to(hidSize).map(_ => r.nextDouble))
     // Weights between hidden and output layer
-    // TODO
+    // Size hidden size * trainOut.length
+    val weights2 = 1.to(hidSize).map(_ => trainOut.map(_ => r.nextDouble))
 }
 
 /** Neuralnet object for running from cli etc. */
