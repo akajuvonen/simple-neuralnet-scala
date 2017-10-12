@@ -13,5 +13,10 @@ class NeuralnetSpec extends FlatSpec {
     assert(net.weights1(0).length == hidSize)
     assert(net.weights2.length == hidSize)
     assert(net.weights2(0).length == trainOut.length)
+    // Check that the values are between 0 and 1
+    assert(net.weights1.flatten.max < 1.0)
+    assert(net.weights1.flatten.min > 0.0)
+    assert(net.weights2.flatten.max < 1.0)
+    assert(net.weights2.flatten.min > 0.0)
   }
 }
