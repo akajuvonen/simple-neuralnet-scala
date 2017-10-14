@@ -60,7 +60,11 @@ object Neuralnet extends App {
   )
   // Training outputs
   val trainOut = Vector(1, 0, 1, 1, 0, 0)
+  // Hidden layer size and maximum interations
+  val hiddenSize = 4
+  val maxIterations = 60000
   // Init neuralnet
-  val nnet: Neuralnet = new Neuralnet(trainIn, trainOut, 4, 60000)
+  val nnet: Neuralnet = new Neuralnet(trainIn, trainOut,
+                                      hiddenSize, maxIterations)
   nnet.train()
 }
