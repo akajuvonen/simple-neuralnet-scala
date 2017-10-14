@@ -12,6 +12,7 @@ import scala.util.Random
  */
 class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
                 hidSize: Int, maxIter: Int) {
+
     /** Init a new neuralnet with type int vectors.
      *
      *  @param trainIn training input data vector
@@ -27,6 +28,9 @@ class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
       this(trainIn.map(_.map(_.toDouble)),
       trainOut.map(_.toDouble), hidSize, maxIter)
     }
+
+    println("Initializing")
+
     // Init weights randomly
     val r = Random
     // Weights between input and hidden layer
@@ -35,6 +39,11 @@ class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
     // Weights between hidden and output layer
     // Size hidden size * trainOut.length
     val weights2 = 1.to(hidSize).map(_ => trainOut.map(_ => r.nextDouble))
+
+    /** The train method. TODO. */
+    def train() {
+      println("Training")
+    }
 }
 
 /** Neuralnet object for running from cli etc. */
@@ -53,4 +62,5 @@ object Neuralnet extends App {
   val trainOut = Vector(1, 0, 1, 1, 0, 0)
   // Init neuralnet
   val nnet: Neuralnet = new Neuralnet(trainIn, trainOut, 4, 60000)
+  nnet.train()
 }
