@@ -43,6 +43,12 @@ class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
     /** The train method. TODO. */
     def train() {
       println("Training")
+      classify()
+    }
+
+    /** Classify method */
+    def classify() {
+      println("Classifying")
     }
 }
 
