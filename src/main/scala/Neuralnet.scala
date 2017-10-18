@@ -10,8 +10,8 @@ import scala.util.Random
  *  @param hidSize number of nodes in hidden layer
  *  @param maxIter max number of iterations to run
  */
-class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
-                hidSize: Int, maxIter: Int) {
+class Neuralnet(trainIn: Vector[Vector[Double]],
+                trainOut: Vector[Vector[Double]], hidSize: Int, maxIter: Int) {
 
     /** Init a new neuralnet with type int vectors.
      *
@@ -21,12 +21,12 @@ class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
      *  @param maxIter max number of iterations to run
      *  @param dummy dummy variable needed because of type erasure, don't use
     */
-    def this(trainIn: Vector[Vector[Int]], trainOut: Vector[Int],
+    def this(trainIn: Vector[Vector[Int]], trainOut: Vector[Vector[Int]],
              hidSize: Int, maxIter: Int, dummy: Int = 0) {
       // Converts ints to doubles and calls the other constructor
       // Only one entry point is allowed in scala
       this(trainIn.map(_.map(_.toDouble)),
-      trainOut.map(_.toDouble), hidSize, maxIter)
+      trainOut.map(_.map(_.toDouble)), hidSize, maxIter)
     }
 
     println("Initializing")
@@ -38,7 +38,7 @@ class Neuralnet(trainIn: Vector[Vector[Double]], trainOut: Vector[Double],
     val weights1 = trainIn(0).map(_ => 1.to(hidSize).map(_ => r.nextDouble))
     // Weights between hidden and output layer
     // Size hidden size * trainOut.length
-    val weights2 = 1.to(hidSize).map(_ => trainOut.map(_ => r.nextDouble))
+    val weights2 = 1.to(hidSize).map(_ => trainOut(0).map(_ => r.nextDouble))
 
     /** The train method. TODO. */
     def train() {
@@ -65,7 +65,14 @@ object Neuralnet extends App {
     Vector(0, 0, 0)
   )
   // Training outputs
-  val trainOut = Vector(1, 0, 1, 1, 0, 0)
+  val trainOut = Vector(
+    Vector(1),
+    Vector(0),
+    Vector(1),
+    Vector(1),
+    Vector(0),
+    Vector(0)
+  )
   // Hidden layer size and maximum interations
   val hiddenSize = 4
   val maxIterations = 60000
