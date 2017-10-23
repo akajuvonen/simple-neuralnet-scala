@@ -19,6 +19,8 @@ object MatrixTools {
    */
   def multiply(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
                : Vector[Vector[Double]] = {
-    Vector(Vector(1.0, 2.0))
+    for(arow <- a) yield
+    for(bcol <- b.transpose) yield
+    dot(arow, bcol)
   }
 }

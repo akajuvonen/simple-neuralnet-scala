@@ -12,7 +12,7 @@ class MatrixToolsSpec extends FlatSpec {
     assert(expected == result)
   }
 
-  ignore should "do matrix multiplication" in {
+  "MatrixTools.multiply" should "do matrix multiplication" in {
     val a = Vector(
       Vector(1.0, 2.0, 3.0),
       Vector(2.0, 3.0, 4.0)
@@ -23,8 +23,8 @@ class MatrixToolsSpec extends FlatSpec {
       Vector(3.0, 4.0)
     )
     val expected = Vector(
-      Vector(14.0, 22.0),
-      Vector(22.0, 29.0)
+      Vector(14.0, 20.0),
+      Vector(20.0, 29.0)
     )
     val result = MatrixTools.multiply(a, b)
     assert(result == expected)
