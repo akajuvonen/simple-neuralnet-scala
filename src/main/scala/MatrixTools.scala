@@ -2,10 +2,15 @@ package com.github.akajuvonen.neuralnet_scala
 
 /** Matrix help tools used by NeuralNetwork class. */
 object MatrixTools {
-  /** TODO */
-  def dot(a: Vector[Double], b: Vector[Double]): Double = {
-    1.0
-  }
+  /** Calculates the dot product of two vectors.
+   *
+   *  @param a The first vector.
+   *  @param b The second vector.
+   *  @return Dot product of two vectors.
+   */
+  def dot(a: Vector[Double], b: Vector[Double]): Double =
+    a.zip(b).map(t => t._1 * t._2).sum
+
   /** Matrix multiplication method.
    *
    * @param a The first matrix to multiply.
