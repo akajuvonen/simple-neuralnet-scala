@@ -9,7 +9,7 @@ object MatrixTools {
    *  @return Dot product of two vectors.
    */
   def dot(a: Vector[Double], b: Vector[Double]): Double =
-    a.zip(b).map(t => t._1 * t._2).sum
+    a.zip(b).map(t => t._1 * t._2).reduceLeft(_ + _)
 
   /** Matrix multiplication method.
    *
