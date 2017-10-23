@@ -20,7 +20,7 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
      *  @param hidSize number of nodes in hidden layer
      *  @param maxIter max number of iterations to run
      *  @param dummy dummy variable needed because of type erasure, don't use
-    */
+     */
     def this(trainIn: Vector[Vector[Int]], trainOut: Vector[Vector[Int]],
              hidSize: Int, maxIter: Int, dummy: Int = 0) {
       // Converts ints to doubles and calls the other constructor
