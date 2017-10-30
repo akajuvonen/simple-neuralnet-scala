@@ -38,7 +38,16 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     /** Classify method */
     def classify() {
       println("Classifying")
-      MatrixTools.multiply(trainIn, weights1)
+      val hiddenLayer = activateLayer(trainIn, weights1)
+    }
+
+    def activateLayer(layer: Vector[Vector[Double]],
+                      weights: Vector[Vector[Double]])
+                      : Vector[Vector[Double]] = {
+      val multiplied = MatrixTools.multiply(layer, weights)
+      for (row <- multiplied) yield
+      for (element <- row) yield
+      SigmoidTools.sigmoid(element)
     }
 
     println("Initializing")
