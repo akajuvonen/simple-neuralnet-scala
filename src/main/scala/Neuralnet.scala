@@ -39,6 +39,8 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     def classify() {
       println("Classifying")
       val hiddenLayer = activateLayer(trainIn, weights1)
+      val outputLayer = activateLayer(hiddenLayer, weights2)
+      println(outputLayer)
     }
 
     def activateLayer(layer: Vector[Vector[Double]],
