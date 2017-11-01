@@ -30,13 +30,13 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     }
 
     /** The train method. TODO. */
-    def train() {
+    def train(): Unit = {
       println("Training")
       classify()
     }
 
     /** Classify method */
-    def classify() {
+    def classify(): Unit = {
       println("Classifying")
       val hiddenLayer = activateLayer(trainIn, weights1)
       val outputLayer = activateLayer(hiddenLayer, weights2)
