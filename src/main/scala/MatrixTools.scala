@@ -24,6 +24,12 @@ object MatrixTools {
     dot(arow, bcol)
   }
 
+  /** Matrix substraction.
+   *
+   *  @param a Matrix to substract from.
+   *  @param b Matrix to be substracted from a.
+   *  @return Substraction result.
+   */
   def subtract(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
                : Vector[Vector[Double]] = {
     for((arow, brow) <- a.zip(b)) yield
