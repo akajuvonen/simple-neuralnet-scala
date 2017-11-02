@@ -23,4 +23,11 @@ object MatrixTools {
     for(bcol <- b.transpose) yield
     dot(arow, bcol)
   }
+
+  def subtract(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
+               : Vector[Vector[Double]] = {
+    // TODO
+    Vector(Vector(1, 2))
+  }
+
 }

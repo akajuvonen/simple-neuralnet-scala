@@ -29,4 +29,21 @@ class MatrixToolsSpec extends FlatSpec {
     val result = MatrixTools.multiply(a, b)
     assert(result == expected)
   }
+
+  ignore should "subtract matrices" in {
+    val a = Vector(
+      Vector(2.0, 3.0),
+      Vector(4.0, 5.0)
+    )
+    val b = Vector(
+      Vector(1.0, 2.0),
+      Vector(2.0, 3.0)
+    )
+    val expected = Vector(
+      Vector(1.0, 1.0),
+      Vector(2.0, 2.0)
+    )
+    val result = MatrixTools.subtract(a, b)
+    assert(result == expected)
+  }
 }
