@@ -13,9 +13,9 @@ object MatrixTools {
 
   /** Matrix multiplication method.
    *
-   * @param a The first matrix to multiply.
-   * @param b The second matrix to multiply.
-   * @return Matrix multiplication result.
+   *  @param a The first matrix to multiply.
+   *  @param b The second matrix to multiply.
+   *  @return Matrix multiplication result.
    */
   def multiply(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
                : Vector[Vector[Double]] = {
