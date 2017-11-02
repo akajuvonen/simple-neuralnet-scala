@@ -26,8 +26,9 @@ object MatrixTools {
 
   def subtract(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
                : Vector[Vector[Double]] = {
-    // TODO
-    Vector(Vector(1, 2))
+    for((arow, brow) <- a.zip(b)) yield
+    for((aelem, belem) <- arow.zip(brow))yield
+    aelem - belem
   }
 
 }
