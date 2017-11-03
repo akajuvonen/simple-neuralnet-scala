@@ -30,7 +30,7 @@ class MatrixToolsSpec extends FlatSpec {
     assert(result == expected)
   }
 
-  "MatrixTools.subtract" should "subtract matrices" in {
+  "MatrixTools.substract" should "substract matrices" in {
     val a = Vector(
       Vector(2.0, 3.0),
       Vector(4.0, 5.0)
@@ -43,7 +43,7 @@ class MatrixToolsSpec extends FlatSpec {
       Vector(1.0, 1.0),
       Vector(2.0, 2.0)
     )
-    val result = MatrixTools.subtract(a, b)
+    val result = MatrixTools.substract(a, b)
     assert(result == expected)
   }
 }

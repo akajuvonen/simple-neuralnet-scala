@@ -30,7 +30,7 @@ object MatrixTools {
    *  @param b Matrix to be substracted from a.
    *  @return Substraction result.
    */
-  def subtract(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
+  def substract(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
                : Vector[Vector[Double]] = {
     for((arow, brow) <- a.zip(b)) yield
     for((aelem, belem) <- arow.zip(brow))yield
