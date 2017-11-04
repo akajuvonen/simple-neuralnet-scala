@@ -33,7 +33,7 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     def train(): Unit = {
       println("Training")
       val (hiddenLayer, outputLayer) = classify()
-      val hiddenError = MatrixTools.substract(trainOut, outputLayer)
+      val outputError = MatrixTools.substract(trainOut, outputLayer)
     }
 
     /** Classify method */
