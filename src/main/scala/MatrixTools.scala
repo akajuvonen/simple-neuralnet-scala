@@ -37,4 +37,9 @@ object MatrixTools {
     aelem - belem
   }
 
+  def multiplyElementwise(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
+                          : Vector[Vector[Double]] = {
+    Vector(Vector(1,2))
+  }
+
 }

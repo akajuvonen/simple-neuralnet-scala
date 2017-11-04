@@ -46,4 +46,17 @@ class MatrixToolsSpec extends FlatSpec {
     val result = MatrixTools.substract(a, b)
     assert(result == expected)
   }
+
+  ignore should "perform element-wise matrix multiplication" in {
+    val a = Vector(
+      Vector(1.0, 2.0),
+      Vector(2.0, 3.0)
+    )
+    val expected = Vector(
+      Vector(1.0, 4.0),
+      Vector(4.0, 9.0)
+    )
+    val result = MatrixTools.multiplyElementwise(a, a)
+    assert(result == expected)
+  }
 }
