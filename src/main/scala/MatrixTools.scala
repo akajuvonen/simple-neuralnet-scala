@@ -37,9 +37,17 @@ object MatrixTools {
     aelem - belem
   }
 
+  /** Element-wise matrix multiplication.
+   *
+   *  @param a First matrix to multiply.
+   *  @param b Second matrix to multiply.
+   *  @return Element-wise multiplied matrix.
+   */
   def multiplyElementwise(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
                           : Vector[Vector[Double]] = {
-    0.to(a.length-1).to[Vector].map(i => 0.to(a(i).length-1).to[Vector].map(j => a(i)(j) * b(i)(j)))
+    0.to(a.length-1).to[Vector]
+      .map(i => 0.to(a(i).length-1).to[Vector]
+        .map(j => a(i)(j) * b(i)(j)))
   }
 
 }
