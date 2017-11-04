@@ -45,9 +45,9 @@ object MatrixTools {
    */
   def multiplyElementwise(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
                           : Vector[Vector[Double]] = {
-    0.to(a.length-1).to[Vector]
-      .map(i => 0.to(a(i).length-1).to[Vector]
-        .map(j => a(i)(j) * b(i)(j)))
+    for(n <- a.zip(b)) yield
+    for(m <- n._1.zip(n._2)) yield
+    m._1 * m._2
   }
 
 }
