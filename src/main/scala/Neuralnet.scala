@@ -34,6 +34,11 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       println("Training")
       val (hiddenLayer, outputLayer) = classify()
       val outputError = MatrixTools.substract(trainOut, outputLayer)
+      /** Multiply element-wise the output error and the sigmoid Derivative
+          applied to all elements of output layer. */
+      val outputAdjustment = MatrixTools.multiplyElementwise(outputError,
+                               outputLayer
+                                 .map(_.map(SigmoidTools.sigmoidDerivative(_))))
     }
 
     /** Classify method */
