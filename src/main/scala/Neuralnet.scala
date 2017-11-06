@@ -37,8 +37,8 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       /** Multiply element-wise the output error and the sigmoid Derivative
           applied to all elements of output layer. */
       val outputAdjustment = MatrixTools.multiplyElementwise(outputError,
-                               outputLayer
-                                 .map(_.map(SigmoidTools.sigmoidDerivative(_))))
+                               outputLayer.map(
+                                 _.map(SigmoidTools.sigmoidDerivative(_))))
     }
 
     /** Classify method */
@@ -64,14 +64,14 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     val r = Random
     // Weights between input and hidden layer
     // Size trainIn(0).length * hidden size
-    val weights1 = trainIn(0)
-                    .map(_ => 1.to(hidSize).to[Vector]
-                      .map(_ => r.nextDouble))
+    val weights1 = trainIn(0).map(_ =>
+                     1.to(hidSize).to[Vector].map(_ =>
+                       r.nextDouble))
     // Weights between hidden and output layer
     // Size hidden size * trainOut.length
-    val weights2 = 1.to(hidSize).to[Vector]
-                     .map(_ => trainOut(0)
-                       .map(_ => r.nextDouble))
+    val weights2 = 1.to(hidSize).to[Vector].map(_ =>
+                     trainOut(0).map(_ =>
+                       r.nextDouble))
 }
 
 /** Neuralnet object for running from cli etc. */
