@@ -60,4 +60,21 @@ class MatrixToolsSpec extends FlatSpec {
     val result = MatrixTools.multiplyElementwise(a, a)
     assert(result == expected)
   }
+
+  "MatrixTools.add" should "add matrices together" in {
+    val a = Vector(
+      Vector(1.0, 2.0),
+      Vector(3.0, 4.0)
+    )
+    val b = Vector(
+      Vector(5.0, 6.0),
+      Vector(7.0, 8.0)
+    )
+    val expected = Vector(
+      Vector(6.0, 8.0),
+      Vector(10.0, 12.0)
+    )
+    val result = MatrixTools.add(a, b)
+    assert(result == expected)
+  }
 }
