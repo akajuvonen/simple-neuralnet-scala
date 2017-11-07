@@ -50,4 +50,16 @@ object MatrixTools {
     m._1 * m._2
   }
 
+  /** Add elements of matrix.
+   *
+   *  @param a First matrix to add.
+   *  @param b Second matrix to add.
+   *  @return Addition result.
+   */
+  def add(a: Vector[Vector[Double]], b: Vector[Vector[Double]])
+                          : Vector[Vector[Double]] = {
+    for(n <- a.zip(b)) yield
+    for(m <- n._1.zip(n._2)) yield
+    m._1 + m._2
+  }
 }
