@@ -39,6 +39,8 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       val outputAdjustment = MatrixTools.multiplyElementwise(outputError,
                                outputLayer.map(
                                  _.map(SigmoidTools.sigmoidDerivative(_))))
+      val hiddenError = MatrixTools.multiply(outputAdjustment,
+                                            weights2.transpose)
     }
 
     /** Classify method */
