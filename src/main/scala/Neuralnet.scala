@@ -84,6 +84,7 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     var weights2 = 1.to(hidSize).to[Vector].map(_ =>
                      trainOut(0).map(_ =>
                        r.nextDouble))
+    train()
 }
 
 /** Neuralnet object for running from cli etc. */
@@ -113,5 +114,4 @@ object Neuralnet extends App {
   // Init neuralnet
   val nnet: Neuralnet = new Neuralnet(trainIn, trainOut,
                                       hiddenSize, maxIterations)
-  nnet.train()
 }
