@@ -85,15 +85,9 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     // Init weights randomly
     val r = Random
     // Weights between input and hidden layer
-    // Size trainIn(0).length * hidden size
-    var weights1 = trainIn(0).map(_ =>
-                     1.to(hidSize).to[Vector].map(_ =>
-                       r.nextDouble))
+    var weights1 = initWeights(trainIn(0).length, hidSize)
     // Weights between hidden and output layer
-    // Size hidden size * trainOut.length
-    var weights2 = 1.to(hidSize).to[Vector].map(_ =>
-                     trainOut(0).map(_ =>
-                       r.nextDouble))
+    var weights2 = initWeights(hidSize, trainOut(0).length)
     train()
 }
 
