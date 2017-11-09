@@ -44,6 +44,13 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       val hiddenAdjustment = MatrixTools.multiplyElementwise(hiddenError,
                               hiddenLayer.map(
                                 _.map(SigmoidTools.sigmoidDerivative(_))))
+      // Update the weights
+      weights2 = MatrixTools.add(weights2,
+        MatrixTools.multiply(hiddenLayer.transpose,
+          outputAdjustment))
+      weights1 = MatrixTools.add(weights1,
+        MatrixTools.multiply(trainIn.transpose,
+          hiddenAdjustment))
     }
 
     /** Classify method */
@@ -69,12 +76,12 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     val r = Random
     // Weights between input and hidden layer
     // Size trainIn(0).length * hidden size
-    val weights1 = trainIn(0).map(_ =>
+    var weights1 = trainIn(0).map(_ =>
                      1.to(hidSize).to[Vector].map(_ =>
                        r.nextDouble))
     // Weights between hidden and output layer
     // Size hidden size * trainOut.length
-    val weights2 = 1.to(hidSize).to[Vector].map(_ =>
+    var weights2 = 1.to(hidSize).to[Vector].map(_ =>
                      trainOut(0).map(_ =>
                        r.nextDouble))
 }
