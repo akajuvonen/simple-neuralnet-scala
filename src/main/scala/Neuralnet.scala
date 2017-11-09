@@ -70,6 +70,10 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       SigmoidTools.sigmoid(element)
     }
 
+    def initWeights(n: Int, m: Int): Vector[Vector[Double]] = {
+      1.to(n).to[Vector].map(_ => 1.to(m).to[Vector].map(_ => r.nextDouble))
+    }
+
     println("Initializing")
 
     // Init weights randomly
