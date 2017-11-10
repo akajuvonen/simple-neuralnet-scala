@@ -1,6 +1,7 @@
 package com.github.akajuvonen.neuralnet_scala
 
 import scala.util.Random
+import scala.annotation.tailrec
 
 /** MPL neural network class.
  *
@@ -30,11 +31,11 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     }
 
     /** The train method. TODO. */
-    def train(weights1: Vector[Vector[Double]],
+    @tailrec
+    private final def train(weights1: Vector[Vector[Double]],
               weights2: Vector[Vector[Double]],
               i: Int = 0):
               (Vector[Vector[Double]], Vector[Vector[Double]]) = {
-      println(i)
       val (hiddenLayer, outputLayer) = classify(trainIn, weights1, weights2)
       val outputError = MatrixTools.substract(trainOut, outputLayer)
       /** Multiply element-wise the output error and the sigmoid Derivative
@@ -121,7 +122,7 @@ object Neuralnet extends App {
   )
   // Hidden layer size and maximum interations
   val hiddenSize = 4
-  val maxIterations = 1000
+  val maxIterations = 60000
   // Init neuralnet
   val nnet: Neuralnet = new Neuralnet(trainIn, trainOut,
                                       hiddenSize, maxIterations)
