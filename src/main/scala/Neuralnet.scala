@@ -31,9 +31,10 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
 
     /** The train method. TODO. */
     def train(weights1: Vector[Vector[Double]],
-              weights2: Vector[Vector[Double]]):
+              weights2: Vector[Vector[Double]],
+              i: Int = 0):
               (Vector[Vector[Double]], Vector[Vector[Double]]) = {
-      println("Training")
+      println(i)
       val (hiddenLayer, outputLayer) = classify(trainIn, weights1, weights2)
       val outputError = MatrixTools.substract(trainOut, outputLayer)
       /** Multiply element-wise the output error and the sigmoid Derivative
@@ -53,7 +54,10 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       val weights1New = MatrixTools.add(weights1,
         MatrixTools.multiply(trainIn.transpose,
           hiddenAdjustment))
-      (weights1New, weights2New)
+      // If iterations full, let's return the weights
+      if (i >= maxIter) (weights1New, weights2New)
+      // Otherwise iterate more
+      else train(weights1New, weights2New, i+1)
     }
 
     /** Classify method */
@@ -61,7 +65,6 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
                  weights1: Vector[Vector[Double]],
                  weights2: Vector[Vector[Double]]):
                  (Vector[Vector[Double]], Vector[Vector[Double]]) = {
-      println("Classifying")
       val hiddenLayer = activateLayer(input, weights1)
       val outputLayer = activateLayer(hiddenLayer, weights2)
       (hiddenLayer, outputLayer)
@@ -85,8 +88,6 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     def initWeights(n: Int, m: Int): Vector[Vector[Double]] = {
       1.to(n).to[Vector].map(_ => 1.to(m).to[Vector].map(_ => r.nextDouble))
     }
-
-    println("Initializing")
 
     // Init weights randomly
     val r = Random
@@ -120,7 +121,7 @@ object Neuralnet extends App {
   )
   // Hidden layer size and maximum interations
   val hiddenSize = 4
-  val maxIterations = 60000
+  val maxIterations = 1000
   // Init neuralnet
   val nnet: Neuralnet = new Neuralnet(trainIn, trainOut,
                                       hiddenSize, maxIterations)
