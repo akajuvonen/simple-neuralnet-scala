@@ -30,9 +30,11 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     }
 
     /** The train method. TODO. */
-    def train(): Unit = {
+    def train(weights1: Vector[Vector[Double]],
+              weights2: Vector[Vector[Double]]):
+              (Vector[Vector[Double]], Vector[Vector[Double]]) = {
       println("Training")
-      val (hiddenLayer, outputLayer) = classify()
+      val (hiddenLayer, outputLayer) = classify(weights1, weights2)
       val outputError = MatrixTools.substract(trainOut, outputLayer)
       /** Multiply element-wise the output error and the sigmoid Derivative
           applied to all elements of output layer. */
@@ -45,16 +47,19 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
                               hiddenLayer.map(
                                 _.map(SigmoidTools.sigmoidDerivative(_))))
       // Update the weights
-      weights2 = MatrixTools.add(weights2,
+      val weights2New = MatrixTools.add(weights2,
         MatrixTools.multiply(hiddenLayer.transpose,
           outputAdjustment))
-      weights1 = MatrixTools.add(weights1,
+      val weights1New = MatrixTools.add(weights1,
         MatrixTools.multiply(trainIn.transpose,
           hiddenAdjustment))
+      (weights1New, weights2New)
     }
 
     /** Classify method */
-    def classify(): (Vector[Vector[Double]], Vector[Vector[Double]]) = {
+    def classify(weights1: Vector[Vector[Double]],
+                 weights2: Vector[Vector[Double]]):
+                 (Vector[Vector[Double]], Vector[Vector[Double]]) = {
       println("Classifying")
       val hiddenLayer = activateLayer(trainIn, weights1)
       val outputLayer = activateLayer(hiddenLayer, weights2)
@@ -85,10 +90,10 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     // Init weights randomly
     val r = Random
     // Weights between input and hidden layer
-    var weights1 = initWeights(trainIn(0).length, hidSize)
+    val weights1Init = initWeights(trainIn(0).length, hidSize)
     // Weights between hidden and output layer
-    var weights2 = initWeights(hidSize, trainOut(0).length)
-    train()
+    val weights2Init = initWeights(hidSize, trainOut(0).length)
+    val (weights1, weights2) = train(weights1Init, weights2Init)
 }
 
 /** Neuralnet object for running from cli etc. */
