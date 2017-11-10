@@ -71,7 +71,7 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       (hiddenLayer, outputLayer)
     }
 
-    def activateLayer(layer: Vector[Vector[Double]],
+    private def activateLayer(layer: Vector[Vector[Double]],
                       weights: Vector[Vector[Double]])
                       : Vector[Vector[Double]] = {
       val multiplied = MatrixTools.multiply(layer, weights)
@@ -86,7 +86,7 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
      *  @param m Vector columns.
      * @return A randomly initialized weight vector.
      */
-    def initWeights(n: Int, m: Int): Vector[Vector[Double]] = {
+    private def initWeights(n: Int, m: Int): Vector[Vector[Double]] = {
       1.to(n).to[Vector].map(_ => 1.to(m).to[Vector].map(_ => r.nextDouble))
     }
 
