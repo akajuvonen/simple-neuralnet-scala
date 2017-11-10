@@ -34,7 +34,7 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
               weights2: Vector[Vector[Double]]):
               (Vector[Vector[Double]], Vector[Vector[Double]]) = {
       println("Training")
-      val (hiddenLayer, outputLayer) = classify(weights1, weights2)
+      val (hiddenLayer, outputLayer) = classify(trainIn, weights1, weights2)
       val outputError = MatrixTools.substract(trainOut, outputLayer)
       /** Multiply element-wise the output error and the sigmoid Derivative
           applied to all elements of output layer. */
@@ -57,11 +57,12 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
     }
 
     /** Classify method */
-    def classify(weights1: Vector[Vector[Double]],
+    def classify(input: Vector[Vector[Double]],
+                 weights1: Vector[Vector[Double]],
                  weights2: Vector[Vector[Double]]):
                  (Vector[Vector[Double]], Vector[Vector[Double]]) = {
       println("Classifying")
-      val hiddenLayer = activateLayer(trainIn, weights1)
+      val hiddenLayer = activateLayer(input, weights1)
       val outputLayer = activateLayer(hiddenLayer, weights2)
       (hiddenLayer, outputLayer)
     }
