@@ -5,7 +5,7 @@ lazy val root = (project in file(".")).
     inThisBuild(List(
       organization := "com.github.akajuvonen",
       scalaVersion := "2.11.8",
-      version      := "0.5"
+      version      := "0.9"
     )),
     name := "neuralnet_scala",
     libraryDependencies += scalaTest % Test
