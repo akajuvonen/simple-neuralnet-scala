@@ -30,7 +30,12 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       trainOut.map(_.map(_.toDouble)), hidSize, maxIter)
     }
 
-    /** The train method. TODO. */
+    /** Neural network train method using recursion.
+     *
+     *  @param weights1 Weights between input and hidden layer.
+     *  @param weights2 Weights between hidden and output layer.
+     *  @return New adjusted weights.
+     */
     @tailrec
     private final def train(weights1: Vector[Vector[Double]],
               weights2: Vector[Vector[Double]],
@@ -55,13 +60,19 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       val weights1New = MatrixTools.add(weights1,
         MatrixTools.multiply(trainIn.transpose,
           hiddenAdjustment))
-      // If iterations full, let's return the weights
+      // If iterations full, return the weights
       if (i >= maxIter) (weights1New, weights2New)
       // Otherwise iterate more
       else train(weights1New, weights2New, i+1)
     }
 
-    /** Classify method */
+    /** Classifies data using neural net.
+     *
+     *  @param input Input data to classify.
+     *  @param weights1 Weights between input and hidden layer.
+     *  @param weights2 Weights between hidden and output layer.
+     *  @return Hidden and output layers.
+     */
     def classify(input: Vector[Vector[Double]],
                  weights1: Vector[Vector[Double]],
                  weights2: Vector[Vector[Double]]):
@@ -71,6 +82,12 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       (hiddenLayer, outputLayer)
     }
 
+    /** Activates a single neural net layer.
+     *
+     *  @param layer Layer to activate (input or hidden).
+     *  @param weights Weights associated with the layer.
+     *  @return Layer inputs multiplied by weights.
+     */
     private def activateLayer(layer: Vector[Vector[Double]],
                       weights: Vector[Vector[Double]])
                       : Vector[Vector[Double]] = {
