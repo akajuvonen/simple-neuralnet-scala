@@ -74,8 +74,8 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
      *  @return Hidden and output layers.
      */
     def classify(input: Vector[Vector[Double]],
-                 weights1: Vector[Vector[Double]],
-                 weights2: Vector[Vector[Double]]):
+                 weights1: Vector[Vector[Double]] = this.weights1,
+                 weights2: Vector[Vector[Double]] = this.weights2):
                  (Vector[Vector[Double]], Vector[Vector[Double]]) = {
       val hiddenLayer = activateLayer(input, weights1)
       val outputLayer = activateLayer(hiddenLayer, weights2)
@@ -137,10 +137,17 @@ object Neuralnet extends App {
     Vector(0),
     Vector(0)
   )
+  val testIn = Vector(
+    Vector(1.0, 0.0, 1.0),
+    Vector(0.0, 0.0, 1.0),
+    Vector(1.0, 1.0, 0.0)
+  )
   // Hidden layer size and maximum interations
   val hiddenSize = 4
   val maxIterations = 60000
   // Init neuralnet
   val nnet: Neuralnet = new Neuralnet(trainIn, trainOut,
                                       hiddenSize, maxIterations)
+  val (hidden, output) = nnet.classify(testIn)
+  println(output)
 }
