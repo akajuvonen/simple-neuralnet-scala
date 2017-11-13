@@ -149,5 +149,6 @@ object Neuralnet extends App {
   val nnet: Neuralnet = new Neuralnet(trainIn, trainOut,
                                       hiddenSize, maxIterations)
   val (hidden, output) = nnet.classify(testIn)
-  println(output)
+  println("Classification result (should be 1 0 1):")
+  output.map(_.map(i => println(i.round)))
 }
