@@ -16,18 +16,18 @@ appear in `target/scala-x.xx/`.
 
 ## Usage
 
-First we have to define training data input and output vectors (can be
-*Double* of *Int*).
+First we have to define training data input and output vectors (should be type
+*Double*).
 
 ```scala
 val trainIn = Vector(
-  Vector(1, 0, 1),
-  Vector(0, 0, 1),
+  Vector(1.0, 0.0, 1.0),
+  Vector(0.0, 0.0, 1.0),
   ...
 )
 val trainOut = Vector(
-  Vector(1),
-  Vector(0),
+  Vector(1.0),
+  Vector(0.0),
   ...
 )
 ```
@@ -52,6 +52,11 @@ When we want to classify new data, first the testing data must be defined
 output layer. The output layer is the classification result.
 
 ```scala
+val testIn = Vector(
+  Vector(1.0, 1.0, 1.0),
+  Vector(0.0, 1.0, 0.0),
+  ...
+)
 val (hidden, output) = nnet.classify(testIn)
 ```
 
