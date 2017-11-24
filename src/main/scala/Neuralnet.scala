@@ -44,9 +44,9 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       val weights1New = MatrixTools.add(weights1,
         MatrixTools.multiply(trainIn.transpose,
           hiddenAdjustment))
-      // If iterations full, return the weights
+      /** If iterations full, return the weights,
+          otherwise iterate more. */
       if (i >= maxIter) (weights1New, weights2New)
-      // Otherwise iterate more
       else train(weights1New, weights2New, i + 1)
     }
 
