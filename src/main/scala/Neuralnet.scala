@@ -47,7 +47,7 @@ class Neuralnet(trainIn: Vector[Vector[Double]],
       // If iterations full, return the weights
       if (i >= maxIter) (weights1New, weights2New)
       // Otherwise iterate more
-      else train(weights1New, weights2New, i+1)
+      else train(weights1New, weights2New, i + 1)
     }
 
     /** Classifies data using neural net.
